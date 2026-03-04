@@ -208,9 +208,3 @@ __marimo__/
 
 # VSCode 
 .vscode/
-
-# Any directories that are to be created as part of the project
-data/inputs.npy
-data/targets.npy
-models/
-outputs/
