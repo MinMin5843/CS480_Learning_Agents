@@ -4,6 +4,20 @@ import torch.optim as optim
 from src.model import DigitNet
 
 def train_model(hidden_size, train_loader, val_loader, epochs=30):
+    """
+    Trains a single model configuration using the given hidden layer size 
+    and evaluates the validation accuracy after each epoch.
+
+    Args:
+        hidden_size: the number of neurons int he hidden layer.
+        train_loader: provides mini-batches of training samples and labels.
+        val_loader: provides mini-batches of validation samples. 
+        epochs: the number of training epochs.
+
+    Yields:
+        A tuple containing the trained DigitNet instance with learned parameters and a 
+        list of validation accuracies, where each validation accuracy is one per enoch.
+    """
     model = DigitNet(hidden_size)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)

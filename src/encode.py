@@ -3,37 +3,42 @@ import numpy as np
 RAW_PATH = "data/raw/optdigits-orig.txt"
 
 def load_bitmap_file(path):
+    """
+    Loads the original Optdigits bitmap dataset and converts it from a 32-by-32 character image into a 
+    flattened 1024-dimensional fearture vector.
+
+    Args:
+        path: the path to the raw optdigits file containing the data.
+    
+    Yields:
+        The input and target files for neural network training.
+        
+    """
     inputs = []
     targets = []
 
     with open(path, "r") as f:
         lines = [line.rstrip("\n") for line in f]
 
-    # Skip header lines until we reach the first bitmap row
     i = 0
     while i < len(lines) and not (set(lines[i]) <= {"0", "1"} and len(lines[i]) == 32):
         i += 1
 
-    # Now parse the dataset
     while i < len(lines):
-        # Read 32 bitmap rows
         bitmap = lines[i:i+32]
         if len(bitmap) < 32:
             break
         i += 32
 
-        # Flatten bitmap into 1024-length vector
         flat = []
         for row in bitmap:
             flat.extend([int(c) for c in row])
 
-        # Read label line
         if i >= len(lines):
             break
         label_line = lines[i].strip()
         i += 1
 
-        # Skip empty lines between samples
         if label_line == "":
             continue
 

@@ -3,6 +3,15 @@ import torch
 from torch.utils.data import TensorDataset, DataLoader
 
 def load_data(batch_size=32):
+    """
+    Splits data from the input and target files into training, validation, and test sets.
+
+    Args:
+        batch_size: the number of samples per batch during training that defaults to 32. 
+
+    Yields:
+        A tuple containing the training, validation, and test data sets. 
+    """
     X = np.load("data/inputs.npy").astype("float32")
     y = np.load("data/targets.npy").astype("int64")
 
