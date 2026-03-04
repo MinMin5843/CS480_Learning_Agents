@@ -11,6 +11,8 @@ This project implements a full machine-learning pipeline for classifying handwri
     pip install numpy torch scikit-learn matplotlib seaborn
 
 ## How to run the program
+NOTE: Once the next steps are completed, the sample solutions I got as a student will be overwritten and cannot be returned to. For the grader, please see my sample solutions under the data, models, and outputs directories to meet requirement 2 of the Assignment 06 Learning Agents guidelines of what to hand in for this assignment. 
+
 1. For Task 1, run the following command:
     ```bash 
     python src/encode.py
